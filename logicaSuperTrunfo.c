@@ -58,8 +58,8 @@ int main() {
 
     // Calculando densidade populacional, super poder e pib per capita da carta 1
 
-    densidade_populacional1 = populacao1/area_cidade1;
-    pib_per_capita1 = pib1/populacao1;
+    densidade_populacional1 = (float)populacao1/area_cidade1;
+    pib_per_capita1 = pib1/(float)populacao1;
     super_poder1 = ( (float) populacao1 + area_cidade1 + pib1 + (float) numero_pontos_turisticos1 + pib_per_capita1 - densidade_populacional1 );
 
     // Solicitação dos dados da segunda carta
@@ -93,8 +93,8 @@ int main() {
 
     // Calculando densidade populacional, super poder e pib per capita da carta 2
 
-    densidade_populacional2 = populacao2/area_cidade2;
-    pib_per_capita2 = pib2/populacao2;
+    densidade_populacional2 = (float)populacao2/area_cidade2;
+    pib_per_capita2 = pib2/(float)populacao2;
     super_poder2 = ( (float) populacao2 + area_cidade2 + pib2 + (float) numero_pontos_turisticos2 + pib_per_capita2 - densidade_populacional2 ); 
     
     // Escolha de qual atributo a ser comparado:
