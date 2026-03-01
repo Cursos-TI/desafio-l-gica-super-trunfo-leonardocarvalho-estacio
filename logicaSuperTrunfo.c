@@ -9,7 +9,7 @@ int main() {
     // Definição das variáveis para armazenar as propriedades das cidades
     // Você pode utilizar o código do primeiro desafio
 
-    int numero_pontos_turisticos1, numero_pontos_turisticos2;
+    int numero_pontos_turisticos1, numero_pontos_turisticos2, atributo1;
     int vencedor_populacao;
     unsigned long int populacao1, populacao2;
     float super_poder1, super_poder2, area_cidade1, pib1, area_cidade2, pib2, densidade_populacional1 = 0, densidade_populacional2 = 0, pib_per_capita1 = 0, pib_per_capita2 = 0;
@@ -89,22 +89,28 @@ int main() {
 
     densidade_populacional2 = populacao2/area_cidade2;
     pib_per_capita2 = pib2/populacao2;
-    super_poder2 = ( (float) populacao2 + area_cidade2 + pib2 + (float) numero_pontos_turisticos2 + pib_per_capita2 - densidade_populacional2 );
+    super_poder2 = ( (float) populacao2 + area_cidade2 + pib2 + (float) numero_pontos_turisticos2 + pib_per_capita2 - densidade_populacional2 ); 
+    
+    // Escolha de qual atributo a ser comparado:
+    
+    printf ("Atributos disponíveis para comparação: \n");
+    printf (" 1 - População\n 2 - Área\n 3 - PIB\n 4 - Número de pontos turísticos\n 5 - Densidade demográfica\n");
+    printf ("Digite o número correspondente ao atributo que quer comparar: ");
+    scanf("%d",&atributo1);
 
-    // Comparação de Cartas:
-    if (populacao1 > populacao2) {
-        printf("Cidade 1 tem maior população. \n");
-        vencedor_populacao = 1;
-    } else {
-        printf("Cidade 2 tem maior população. \n");
-        vencedor_populacao = 2;
+    switch(atributo1) {
+        case 1: 
+        if (populacao1 > populacao2) {
+            printf("Cidade 1 tem maior população.\n");
+            vencedor_populacao = 1;
+        } else if (populacao1 < populacao2) {
+            printf("Cidade 2 tem maior população.\n");
+            vencedor_populacao = 2;
+        } else {
+            printf("Houve um empate!\n");
+            vencedor_populacao = 0;
+        }
     }
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
 
     // Exibição dos Resultados:
     // Após realizar as comparações, exiba os resultados para o usuário.
