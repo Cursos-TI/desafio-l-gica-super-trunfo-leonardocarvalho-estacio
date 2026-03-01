@@ -14,7 +14,12 @@ int main() {
     int vencedor;
     unsigned long int populacao1, populacao2;
     float super_poder1, super_poder2, area_cidade1, pib1, area_cidade2, pib2, densidade_populacional1 = 0, densidade_populacional2 = 0, pib_per_capita1 = 0, pib_per_capita2 = 0;
-    char nome_atributo[50], estado1[5], codigo_carta1[20], nome_cidade1[50], estado2[5], codigo_carta2[20], nome_cidade2[50];
+    char estado1[5], codigo_carta1[20], nome_cidade1[50], estado2[5], codigo_carta2[20], nome_cidade2[50];
+
+    //Variáveis para exibição no final:
+
+    char nome_atributo[50];
+    float valor_exibição1, valor_exibição2;
 
     
     // Cadastro das Cartas:
@@ -95,13 +100,18 @@ int main() {
     // Escolha de qual atributo a ser comparado:
     
     printf ("Escolha um atributo entre os atributos disponíveis para comparação: \n\n");
-    printf (" 1 - População\n 2 - Área\n 3 - PIB\n 4 - Número de pontos turísticos\n 5 - Densidade demográfica\n");
+    printf (" 1 - População\n 2 - Área\n 3 - PIB\n 4 - Número de pontos turísticos\n 5 - Densidade demográfica\n\n");
     printf ("Digite o número correspondente ao atributo que quer comparar: ");
     scanf("%d",&atributo1);
+    printf("\n\n");
 
     switch(atributo1) {
         case 1: 
         strcpy(nome_atributo, "População");
+
+        valor_exibição1 = (float)populacao1;
+        valor_exibição2 = (float)populacao2;
+
         if (populacao1 > populacao2) {
             printf("Cidade 1 tem maior população.\n");
             vencedor = 1;
@@ -116,6 +126,10 @@ int main() {
 
         case 2: 
         strcpy(nome_atributo, "Área");
+
+        valor_exibição1 = area_cidade1;
+        valor_exibição2 = area_cidade2;
+
         if (area_cidade1 > area_cidade2) {
             printf("Cidade 1 tem maior área.\n");
             vencedor = 1;
@@ -130,6 +144,10 @@ int main() {
 
         case 3: 
         strcpy(nome_atributo, "PIB");
+
+        valor_exibição1 = pib1;
+        valor_exibição2 = pib2;
+
         if (pib1 > pib2) {
             printf("Cidade 1 tem maior PIB.\n");
             vencedor = 1;
@@ -144,6 +162,10 @@ int main() {
 
         case 4: 
         strcpy(nome_atributo, "Número de Pontos Turísticos");
+
+        valor_exibição1 = (float)numero_pontos_turisticos1;
+        valor_exibição2 = (float)numero_pontos_turisticos2;
+
         if (numero_pontos_turisticos1 > numero_pontos_turisticos2) {
             printf("Cidade 1 tem maior número de pontos turísticos.\n");
             vencedor = 1;
@@ -158,6 +180,10 @@ int main() {
 
         case 5: 
         strcpy(nome_atributo, "Densidade Demográfica");
+
+        valor_exibição1 = densidade_populacional1;
+        valor_exibição2 = densidade_populacional2;
+
         if (densidade_populacional2 > densidade_populacional1) {
             printf("Cidade 1 tem menor densidade populacional.\n");
             vencedor = 1;
@@ -178,11 +204,17 @@ int main() {
     // Após realizar as comparações, exiba os resultados para o usuário.
     // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
 
-    printf ("Comparação de cartas (Atributo: %s):\n\n",nome_atributo);
-    printf ("Carta 1 - %s (%s): %i\n", nome_cidade1, estado1, populacao1);
-    printf ("Carta 2 - %s (%s): %i\n", nome_cidade2, estado2, populacao2);
-    printf ("Resultado: Carta %i (%s) venceu!\n",vencedor, 
-            (populacao1 > populacao2) ? nome_cidade1 : nome_cidade2);
+    printf ("\nComparação de cartas (Atributo: %s):\n\n",nome_atributo);
+    printf ("Carta 1 - %s (%s): %.2f\n", nome_cidade1, estado1, valor_exibição1);
+    printf ("Carta 2 - %s (%s): %.2f\n", nome_cidade2, estado2, valor_exibição2);
+
+    if (vencedor == 0 ) {
+        printf ("Resultado: Empate!\n");
+    } else if (vencedor == 1) {
+        printf ("Resultado: Carta %i (%s) venceu!\n",vencedor, nome_cidade1);
+    } else { 
+        printf ("Resultado: Carta %i (%s) venceu!\n",vencedor, nome_cidade2);
+    }
 
     return 0;
 }
