@@ -14,12 +14,13 @@ int main() {
     int vencedor;
     unsigned long int populacao1, populacao2;
     float super_poder1, super_poder2, area_cidade1, pib1, area_cidade2, pib2, densidade_populacional1 = 0, densidade_populacional2 = 0, pib_per_capita1 = 0, pib_per_capita2 = 0;
+    float soma_atributos1, soma_atributos2;
     char estado1[5], codigo_carta1[20], nome_cidade1[50], estado2[5], codigo_carta2[20], nome_cidade2[50];
 
     //Variáveis para exibição no final:
 
-    char nome_atributo[50];
-    float valor_exibição1, valor_exibição2;
+    char nome_atributo[50], nome_atributo2[50];
+    float valor_exibicao1_A, valor_exibicao2_A, valor_exibicao1_B, valor_exibicao2_B;
 
     
     // Cadastro das Cartas:
@@ -109,8 +110,8 @@ int main() {
         case 1: 
         strcpy(nome_atributo, "População");
 
-        valor_exibição1 = (float)populacao1;
-        valor_exibição2 = (float)populacao2;
+        valor_exibicao1_A = (float)populacao1;
+        valor_exibicao2_A = (float)populacao2;
 
         if (populacao1 > populacao2) {
             printf("Cidade 1 tem maior população.\n");
@@ -127,8 +128,8 @@ int main() {
         case 2: 
         strcpy(nome_atributo, "Área");
 
-        valor_exibição1 = area_cidade1;
-        valor_exibição2 = area_cidade2;
+        valor_exibicao1_A = area_cidade1;
+        valor_exibicao2_A = area_cidade2;
 
         if (area_cidade1 > area_cidade2) {
             printf("Cidade 1 tem maior área.\n");
@@ -145,8 +146,8 @@ int main() {
         case 3: 
         strcpy(nome_atributo, "PIB");
 
-        valor_exibição1 = pib1;
-        valor_exibição2 = pib2;
+        valor_exibicao1_A = pib1;
+        valor_exibicao2_A = pib2;
 
         if (pib1 > pib2) {
             printf("Cidade 1 tem maior PIB.\n");
@@ -163,8 +164,8 @@ int main() {
         case 4: 
         strcpy(nome_atributo, "Número de Pontos Turísticos");
 
-        valor_exibição1 = (float)numero_pontos_turisticos1;
-        valor_exibição2 = (float)numero_pontos_turisticos2;
+        valor_exibicao1_A = (float)numero_pontos_turisticos1;
+        valor_exibicao2_A = (float)numero_pontos_turisticos2;
 
         if (numero_pontos_turisticos1 > numero_pontos_turisticos2) {
             printf("Cidade 1 tem maior número de pontos turísticos.\n");
@@ -181,8 +182,8 @@ int main() {
         case 5: 
         strcpy(nome_atributo, "Densidade Demográfica");
 
-        valor_exibição1 = densidade_populacional1;
-        valor_exibição2 = densidade_populacional2;
+        valor_exibicao1_A = densidade_populacional1;
+        valor_exibicao2_A = densidade_populacional2;
 
         if (densidade_populacional2 > densidade_populacional1) {
             printf("Cidade 1 tem menor densidade populacional.\n");
@@ -205,8 +206,8 @@ int main() {
     // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
 
     printf ("\nComparação de cartas (Atributo: %s):\n\n",nome_atributo);
-    printf ("Carta 1 - %s (%s): %.2f\n", nome_cidade1, estado1, valor_exibição1);
-    printf ("Carta 2 - %s (%s): %.2f\n", nome_cidade2, estado2, valor_exibição2);
+    printf ("Carta 1 - %s (%s): %.2f\n", nome_cidade1, estado1, valor_exibicao1_A);
+    printf ("Carta 2 - %s (%s): %.2f\n", nome_cidade2, estado2, valor_exibicao2_A);
 
     if (vencedor == 0 ) {
         printf ("Resultado: Empate!\n");
