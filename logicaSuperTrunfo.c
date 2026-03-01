@@ -10,8 +10,8 @@ int main() {
     // Definição das variáveis para armazenar as propriedades das cidades
     // Você pode utilizar o código do primeiro desafio
 
-    int numero_pontos_turisticos1, numero_pontos_turisticos2, atributo1;
-    int vencedor;
+    int numero_pontos_turisticos1, numero_pontos_turisticos2;
+    int vencedor, atributo1, atributo2;
     unsigned long int populacao1, populacao2;
     float super_poder1, super_poder2, area_cidade1, pib1, area_cidade2, pib2, densidade_populacional1 = 0, densidade_populacional2 = 0, pib_per_capita1 = 0, pib_per_capita2 = 0;
     float soma_atributos1, soma_atributos2;
@@ -100,10 +100,28 @@ int main() {
     
     // Escolha de qual atributo a ser comparado:
     
-    printf ("Escolha um atributo entre os atributos disponíveis para comparação: \n\n");
-    printf (" 1 - População\n 2 - Área\n 3 - PIB\n 4 - Número de pontos turísticos\n 5 - Densidade demográfica\n\n");
-    printf ("Digite o número correspondente ao atributo que quer comparar: ");
+    printf ("Escolha dois atributos diferentes entre os atributos disponíveis para comparação: \n\n");
+    printf (" 1 - População\n 2 - Área\n 3 - PIB\n 4 - Número de pontos turísticos\n 5 - Densidade demográfica\n 6 - Super poder\n\n");
+    printf ("Digite o primeiro número, correspondente ao atributo que quer comparar: ");
     scanf("%d",&atributo1);
+
+    // Lógica para fazer o menu dinamico onde a opção escolhida desaparece e impede o usuário de escolher um atributo igual
+
+    if (atributo1 != 1) printf("1 - População\n");
+    if (atributo1 != 2) printf("2 - Área\n");
+    if (atributo1 != 3) printf("3 - PIB\n");
+    if (atributo1 != 4) printf("4 - Pontos Turísticos\n");
+    if (atributo1 != 5) printf("5 - Densidade\n");
+    if (atributo1 != 6) printf("6 - Super Poder\n");
+
+    printf ("Digite o segundo número, correspondente ao atributo que quer comparar: ");
+    scanf("%d",&atributo2);
+
+    if (atributo1 == atributo2) {
+        printf("\nErro: Escolha atributos diferentes!\n");
+        return 0;
+    }
+
     printf("\n\n");
 
     switch(atributo1) {
@@ -196,6 +214,25 @@ int main() {
             vencedor = 0;
         }
             break;
+
+        case 6:
+        strcpy(nome_atributo, "Super Poder");
+
+        valor_exibicao1_A = super_poder1;
+        valor_exibicao2_A = super_poder2;
+
+        if (super_poder1 > super_poder2) {
+            printf("Cidade 1 tem maior super poder.\n");
+            vencedor = 1;
+        } else if (super_poder1 < super_poder2) {
+            printf("Cidade 2 tem menor super poder.\n");
+            vencedor = 2;
+        } else {
+            printf("Houve um empate!\n");
+            vencedor = 0;
+        }
+            break;
+
         default:
             printf("Opção inválida");
             return 0;
